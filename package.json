@@ -1,0 +1,24 @@
+{
+  "name": "emergency-numbers-parser",
+  "version": "0.0.0",
+  "description": "",
+  "main": "911-parser.js",
+  "dependencies": {
+    "jsdom": "~0.8.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/emergency-numbers/emergency-numbers-parser.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "341748062186bd1ce07a4e6aef7708858118bac8",
+  "bugs": {
+    "url": "https://github.com/emergency-numbers/emergency-numbers-parser/issues"
+  }
+}

@@ -1,12 +1,33 @@
+/** @TODO Add more robust parsing of HTML **/
+/** @TODO Add more robust matching of ISO code **/      		
+
+
+
 var jsdom = require('jsdom');
 var fs 	  = require('fs');
 var htmlSrc;
+var isoSrc;
 
 fs.readFile('911.html', {encoding: 'utf-8'}, function (err, data) {
   if (err) throw err;
   htmlSrc = data;
   parse();
 });
+
+fs.readFile('countrycodes.json', {encoding: 'utf-8'}, function (err, data) {
+  if (err) throw err;
+  isoSrc = JSON.parse(data);
+});
+
+/* @TODO - add better matching */
+var mapName = function (name) {
+	for (var i =0; i<isoSrc.length; i++) {
+		if (isoSrc[i].name == name) {
+			return isoSrc[i].alpha_2;
+		}
+	}
+	return false;
+};
 
 var parse = function () {
 
@@ -22,7 +43,7 @@ var parse = function () {
 
       var countries = [];
       
-      var country;
+      var country, isocode;
       var police, fire, ambulance;
       
       tables.each(function (i, table) {
@@ -66,16 +87,27 @@ var parse = function () {
       		ambulance = ambulance || fire || police;
       		fire = fire || police;
       		
+      		isocode = mapName(country);
+      		
       		countries.push ({
-      			'name' 			: country,
-      			'police' 		:	police,
-      			'fire' 			: fire,
-      			'ambulance' : ambulance
+      			'name' 			 : country,
+      			'isoalpha-2' : isocode || 'XX',
+      			'numbers'    : {
+      				'police' 		:	police,
+      				'fire' 			: fire,
+      				'ambulance' : ambulance
+      			}
       		});
       	}
       });
       
-  	  console.log (countries);
+      fs.writeFile("911.json", JSON.stringify(countries), function(err) {
+          if(err) {
+              console.log(err);
+          } else {
+              console.log("The file was saved!");
+          }
+      }); 
 		}
   });
 }

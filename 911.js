@@ -14,7 +14,7 @@ fs.readFile('911.html', {encoding: 'utf-8'}, function (err, data) {
   parse();
 });
 
-fs.readFile('countrycodes.json', {encoding: 'utf-8'}, function (err, data) {
+fs.readFile('iso-3166.json', {encoding: 'utf-8'}, function (err, data) {
   if (err) throw err;
   isoSrc = JSON.parse(data);
 });
@@ -23,7 +23,7 @@ fs.readFile('countrycodes.json', {encoding: 'utf-8'}, function (err, data) {
 var mapName = function (name) {
 	for (var i =0; i<isoSrc.length; i++) {
 		if (isoSrc[i].name == name) {
-			return isoSrc[i].alpha_2;
+			return isoSrc[i]['alpha-2'];
 		}
 	}
 	return false;

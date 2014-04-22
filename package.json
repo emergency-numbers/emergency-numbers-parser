@@ -2,7 +2,7 @@
   "name": "emergency-numbers-parser",
   "version": "0.0.0",
   "description": "",
-  "main": "911.js",
+  "main": "911-parse.js",
   "dependencies": {
     "jsdom": "~0.8.11"
   },

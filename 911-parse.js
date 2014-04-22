@@ -31,7 +31,7 @@ var countrymap = {
   'Brunei' : '',
   'Burma' : '',
   'Cambodia, The Kingdom of' : '',
-  'Canary Islands' : '',
+  'Canary Islands' : 'Spain',
   'China, The People\'s Republic of' : '',
   'Columbia' : '',
   'Comoros Islands' : '',
@@ -39,7 +39,7 @@ var countrymap = {
   'Dominica, Commonwealth of' : '',
   'East Timor' : '',
   'Easter Island' : '',
-  'England' : '',
+  'England' 				: 'United Kingdom',
   'Faeroe Islands' : '',
   'Falkland Islands' : '',
   'Gaborone' : '',
@@ -53,10 +53,10 @@ var countrymap = {
   'Laos' : '',
   'Macau' : '',
   'Macedonia, Republic of' : '',
-  'Madeira' : '',
+  'Madeira' : 'Portugal',
   'Maldives Republic' : '',
   'Marianas Island' : '',
-  'Menorca' : '',
+  'Menorca' : 'Spain',
   'México' : '',
   'Moldavia' : '',
   'Moyotte' : '',
@@ -67,7 +67,7 @@ var countrymap = {
   'Russia' : '',
   'Sabah' : '',
   'São Tomé and Principe' : '',
-  'Scotland' : '',
+  'Scotland' : 'United Kingdom',
   'Scilly, Isles of' : '',
   'Slovak Republic' : '',
   'S. Georgia Is.' : '',
@@ -156,7 +156,7 @@ var parse = function () {
 
 		/** @TODO - add mapping for country here **/ 
 
-		if (!isocode) console.log (country);
+		if (!isocode) isocode = mapName(countrymap[country]);
       		countries.push ({
       			'name' : country,
 			'extra' : country_extra,
